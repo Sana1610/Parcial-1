@@ -1,18 +1,34 @@
 package edu.eci.cvds.stock.model;
 
+import jakarta.persistence.*;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+
+@Entity
+@Table(name = "products")
 public class Product {
 
+    private @Id @GeneratedValue int idProducto;
     private String name;
     private float price;
     private int quantity;
     private String category;
 
-    public Product(String name, float price, int quantity, String category){
+    public Product(int id, String name, float price, int quantity, String category){
+        this.idProducto = id;
         this.name = name;
         this.price = price;
         this.quantity = quantity;
         this.category = category;
     }
+
+    public int getIdProducto(){
+        return idProducto;
+    }
+
+    public void setIdProducto(int idProducto){
+        this.idProducto = idProducto;
+    }
+
     public String getName()
     {
         return name;
